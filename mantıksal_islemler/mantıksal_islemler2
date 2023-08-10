@@ -1,0 +1,29 @@
+import cv2
+import numpy as np
+import matplotlib.pyplot as plt
+
+
+
+
+x=np.uint8([120])
+y=np.uint8([25])
+
+z=cv2.add(x,y)
+print(z)#[[145]]
+#
+
+img1=np.zeros((300,300,3),np.uint8)+255
+cv2.circle(img1,(150,150),50,(255,0,0),-1) #daire çizdirme
+cv2.imshow("img1",img1)
+
+img2=np.zeros((300,300,3),np.uint8)+255
+cv2.line(img2,(0,0),(150,150),(0,255,0),5)#çizgi çizdirme
+cv2.imshow("img2",img2)
+
+dst=cv2.addWeighted(img1, 0.7, img2, 0.3, 0)
+#              img1x0.7  mg2x0.3  renk yoğunlukları toplandığı için yoğunuk belirtmek gerek
+#                      toplamları 1 olmalı
+cv2.imshow("dst",dst)
+
+
+cv2.waitKey(0)
